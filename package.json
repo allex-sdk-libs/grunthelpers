@@ -1,0 +1,41 @@
+{
+  "name": "allex_grunthelperssdklib",
+  "version": "1.0.0",
+  "description": "AllexJS sdk lib for grunt manipulation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allex-sdk-libs/grunthelpers.git"
+  },
+  "dependencies": {
+    "grunt": "1.x",
+    "grunt-browserify": "5.x",
+    "grunt-contrib-compass": "1.x",
+    "grunt-contrib-concat": "1.x",
+    "grunt-contrib-copy": "1.x",
+    "grunt-contrib-jshint": "1.x",
+    "grunt-contrib-symlink": "1.x",
+    "grunt-contrib-uglify": "https://github.com/hers-belgrade/grunt-contrib-uglify.git",
+    "grunt-exec": "2.x",
+    "grunt-file-exists": "^0.1.4",
+    "grunt-html-template": "https://github.com/hers-belgrade/grunt-html-template.git",
+    "grunt-mkdir": "1.x",
+    "grunt-template": "1.x"
+  },
+  "keywords": [
+    "ecosystem:AllexJS",
+    "sdk",
+    "lib",
+    "grunt",
+    "helpers"
+  ],
+  "author": "Andrija Petrovic <andrija.hers@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allex-sdk-libs/grunthelpers/issues"
+  },
+  "homepage": "https://github.com/allex-sdk-libs/grunthelpers#readme"
+}
