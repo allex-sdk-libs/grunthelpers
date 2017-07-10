@@ -1,27 +1,48 @@
-var grunt = require('grunt'), 
-  Path = require('path');
+var grunt = require('grunt');
+
+function appendifKeys(tasklist,taskname, config) {
+  if (!config || !Object.keys(config).length) {
+    return;
+  }
+  tasklist.push (taskname);
+}
+
+function appendKeyMap (map, tasklist) {
+  if (!tasklist) tasklist = [];
+  for (var i in map) {
+    appendifKeys(tasklist, i, map[i]);
+  }
+  return tasklist;
+}
+
+/*
+function loadGrunter (Lib) {
+  return createGrunter(Lib, );
+}
+*/
 
 function createGrunter (Lib) {
   'use strict';
-  var Q = Lib.q;
-  function appendifKeys(tasklist,taskname, config) {
-    if (!config || !Object.keys(config).length) {
-      return;
-    }
-    tasklist.push (taskname);
+  var Q = Lib.q,
+    Node = require('allex_nodehelpersserverruntimelib')(Lib),
+    Path = Node.Path,
+    gruntLocation = findGruntLocation();
+
+  function checkForGrunt (dir) {
+    return Node.Fs.dirExists(Node.Path.join(dir, 'node_modules', 'grunt'));
   }
 
-  function appendKeyMap (map, tasklist) {
-    if (!tasklist) tasklist = [];
-    for (var i in map) {
-      appendifKeys(tasklist, i, map[i]);
+  function findGruntLocation () {
+    var dir = __dirname;
+    while (!checkForGrunt(dir)) {
+      dir = Path.resolve(dir, '..');
     }
-    return tasklist;
+    return dir;
   }
 
   function finalizeGrunt(config) {
     var current = process.cwd();
-    process.chdir(Path.resolve(__dirname, './'));
+    process.chdir(gruntLocation);
     config.GruntTasks.forEach(grunt.task.loadNpmTasks.bind(grunt.tasks));
     grunt.task.run(config.tasklist);
     process.chdir(current);
