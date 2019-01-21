@@ -43,7 +43,7 @@ function createGrunter (Lib) {
   function finalizeGrunt(config) {
     var current = process.cwd();
     process.chdir(gruntLocation);
-    config.GruntTasks.forEach(grunt.task.loadNpmTasks.bind(grunt.tasks));
+    config.GruntTasks.forEach(grunt.task.loadNpmTasks.bind(grunt.task));
     grunt.task.run(config.tasklist);
     process.chdir(current);
     if (Lib.isFunction(config.done)) {
@@ -64,7 +64,11 @@ function createGrunter (Lib) {
       d.promise.done(finalizeGrunt.bind(null, config));
       config.grunt(grunt, params, d);
     }else{
-      config.grunt(grunt, params);
+      var res = config.grunt(grunt, params);
+      if (Q.isThenable(res)) {
+        res.then(finalizeGrunt.bind(null, config));
+        return;
+      }
       finalizeGrunt(config);
     }
   }
