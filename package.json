@@ -1,6 +1,6 @@
 {
   "name": "allex_grunthelperssdklib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "AllexJS sdk lib for grunt manipulation",
   "main": "index.js",
   "scripts": {
@@ -14,11 +14,11 @@
     "grunt": "1.x",
     "grunt-browserify": "6.x",
     "grunt-contrib-compass": "1.x",
-    "grunt-contrib-concat": "1.x",
+    "grunt-contrib-concat": "2.x",
     "grunt-contrib-copy": "1.x",
     "grunt-contrib-jshint": "3.x",
     "grunt-contrib-symlink": "1.x",
-    "hers-grunt-contrib-uglify": "3.x",
+    "grunt-contrib-uglify": "5.x",
     "grunt-exec": "3.x",
     "grunt-file-exists": "^0.1.4",
     "grunt-html-template": "0.1.6",
